@@ -1,0 +1,12 @@
+﻿using backend.Models;
+
+namespace backend.Services
+{
+    public interface IProductService
+    {
+        Task<ProductFilter> GetProductByCategory(int id, int pageNumber, int pageSize, string? textSearch);
+        Task<SanPham> GetProductById(int id);
+        Task <List<SanPham>> GetProductByIdCart(int id);
+        Task <List<SanPham>> GetListProductNew();
+    }
+}

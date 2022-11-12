@@ -18,6 +18,8 @@ namespace backend.Models
         public string TrangThai { get; set; }
         public DateTime NgayLap { get; set; }
 
+        public int IdKhachHang { get; set; }
+
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
 
         public virtual ICollection<NguoiDung> IdnguoiDung { get; set; }

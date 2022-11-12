@@ -113,6 +113,8 @@ namespace backend.Data
 
                 entity.Property(e => e.TongGia).HasColumnType("decimal(18, 4)");
 
+                entity.Property(e => e.IdKhachHang).HasColumnType("int");
+
                 entity.Property(e => e.TrangThai)
                     .IsRequired()
                     .HasMaxLength(255)
@@ -128,7 +130,7 @@ namespace backend.Data
                         {
                             j.HasKey("MaHd", "IdnguoiDung").HasName("PK__QuanLy__A8E8DB509817FC34");
 
-                            j.ToTable("QuanLy");
+                            
 
                             j.IndexerProperty<int>("MaHd").HasColumnName("MaHD");
 
