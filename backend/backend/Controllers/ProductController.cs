@@ -21,9 +21,16 @@ namespace backend.Controllers
             _productService = productService;
         }
 
+        [HttpGet]
+        public async Task<ActionResult<List<ProductFilter>>> GetProducts(int pageNumber = 1, int pageSize = 20, string? textSearch = "")
+        {
+            var res = await _productService.GetProducts(pageNumber, pageSize, textSearch);
+            return Ok(res);
+        }
+       
         // GET: api/Product
         [HttpGet("GetProductByCategory")]
-        public async Task<ActionResult<List<ProductFilter>>> GetProductByCategory(int id,int pageNumber = 1, int pageSize = 20,string? textSearch = "")
+        public async Task<ActionResult<ProductFilter>> GetProductByCategory(int id,int pageNumber = 1, int pageSize = 20,string? textSearch = "")
         {
             var res = await _productService.GetProductByCategory(id,pageNumber,pageSize,textSearch);
             return Ok(res);
@@ -49,10 +56,10 @@ namespace backend.Controllers
             return res;
         }
         [HttpGet("GetListProductNew")]
-        public async Task<ActionResult<List<SanPham>>> GetListProductNew()
+        public async Task<ActionResult<List<SanPham>>> GetListProductNew(int pageNumber = 1, int pageSize = 20, string? textSearch = "")
         {
-            var res = await _productService.GetListProductNew();
-            return Ok();
+            var res = await _productService.GetListProductNew(pageNumber,pageSize,textSearch);
+            return Ok(res);
         }
 
 

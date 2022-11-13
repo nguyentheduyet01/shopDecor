@@ -11,22 +11,41 @@ namespace backend.Services
             _productRepository = productRepository;
         }
 
-        public Task<List<SanPham>> GetListProductNew()
+        public async Task<ProductFilter> GetListProductNew(int pageNumber, int pageSize, string? textSearch)
         {
-            return _productRepository.GetListProductNew();
+            if (textSearch == null)
+            {
+                textSearch = string.Empty;
+            }
+            var product = await _productRepository.GetListProductNew(textSearch);
+
+            ProductFilter productFilter = new ProductFilter
+            {
+                CurrentPage = pageNumber,
+                CurrentPageRecord = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).Count(),
+                TotalPage = (int)Math.Ceiling((double)product.Count() / pageSize) > 0 ? (int)Math.Ceiling((double)product.Count() / pageSize) : 1,
+                TotalRecord = product.Count(),
+                Data = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+            };
+
+            return productFilter;
         }
 
         public async Task<ProductFilter> GetProductByCategory(int id, int pageNumber, int pageSize, string? textSearch)
         {
+            if(textSearch == null)
+            {
+                textSearch = string.Empty;
+            }    
             var product = await _productRepository.GetProductByCategory(id,textSearch);
 
             ProductFilter productFilter = new ProductFilter
             {
                 CurrentPage = pageNumber,
-                CurrentPageRecord = product.Skip( (pageNumber - 1) * pageSize).Count(),
+                CurrentPageRecord = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).Count(),
                 TotalPage = (int)Math.Ceiling((double)product.Count() / pageSize) > 0 ? (int)Math.Ceiling((double)product.Count() / pageSize) : 1,
                 TotalRecord = product.Count(),
-                Data = product
+                Data = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
             };
 
             return productFilter;
@@ -46,6 +65,26 @@ namespace backend.Services
         public async Task<List<SanPham>> GetProductByIdCart(int id)
         {
             return await _productRepository.GetProductByIdCart(id);
+        }
+
+        public async Task<ProductFilter> GetProducts(int pageNumber, int pageSize, string? textSearch)
+        {
+            if(textSearch == null)
+            {
+                textSearch = string.Empty;
+            }    
+            var product = await _productRepository.GetProducts(textSearch);
+
+            ProductFilter productFilter = new ProductFilter
+            {
+                CurrentPage = pageNumber,
+                CurrentPageRecord = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).Count(),
+                TotalPage = (int)Math.Ceiling((double)product.Count() / pageSize) > 0 ? (int)Math.Ceiling((double)product.Count() / pageSize) : 1,
+                TotalRecord = product.Count(),
+                Data = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+            };
+
+            return productFilter;
         }
     }
 }

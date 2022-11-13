@@ -15,5 +15,15 @@ namespace backend.Services
         {
             return await _cartRepository.AddProductToCart(item,idCustomer);
         }
+
+        public async Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item)
+        {
+            return await _cartRepository.DeleteProductToCart(item);
+        }
+
+        public async Task<int> EditProductToCart(ChiTietHoaDon item)
+        {
+            return await _cartRepository.EditProductToCart(item);
+        }
     }
 }

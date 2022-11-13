@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models
 {
@@ -14,6 +15,8 @@ namespace backend.Models
         }
 
         public decimal TongGia { get; set; }
+
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaHd { get; set; }
         public string TrangThai { get; set; }
         public DateTime NgayLap { get; set; }

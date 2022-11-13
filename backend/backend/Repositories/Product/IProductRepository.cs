@@ -7,6 +7,7 @@ namespace backend.Repositories
         Task <List<SanPham>> GetProductByCategory(int id,string textSearch);
         Task<SanPham> GetProductById(int id);
         Task<List<SanPham>> GetProductByIdCart(int id);
-        Task<List<SanPham>> GetListProductNew();
+        Task<List<SanPham>> GetListProductNew(string textSearch);
+        Task<List<SanPham>> GetProducts(string textSearch);
     }
 }

@@ -20,7 +20,6 @@ namespace backend.Repositories
                 HoaDon hd = new HoaDon
                 {
                     IdKhachHang = idCustomer,
-                    MaHd = item.MaHd,
                     TongGia = 0,
                     TrangThai = "Gio Hang",
                     NgayLap = DateTime.Now
@@ -32,9 +31,34 @@ namespace backend.Repositories
 
             }
             _context.ChiTietHoaDon.Add(item);
+            _context.SaveChanges();
             return idCustomer;
            
             
+        }
+
+        public async Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item)
+        {
+            var entity = _context.ChiTietHoaDon.Where(n => n.MaHd == item.MaHd && n.MaSp == item.MaSp).FirstOrDefault();
+            if(entity != null)
+            {
+                _context.ChiTietHoaDon.Remove(entity);
+                _context.SaveChanges();
+            }
+            return item;
+        }
+
+        public async Task<int> EditProductToCart(ChiTietHoaDon item)
+        {
+            var entity = _context.ChiTietHoaDon.Where(n => n.MaHd == item.MaHd && n.MaSp == item.MaSp).FirstOrDefault();
+
+            if (entity != null)
+            {
+                entity.SoLuong = item.SoLuong;
+                _context.SaveChanges();
+                return 1;
+            }
+            else return 0;
         }
     }
 }
