@@ -78,6 +78,11 @@ namespace backend.Repositories
             return await lstProduct.ToListAsync();
         }
 
+        public async Task<List<SanPham>> GetProductByRange(int minRange, int maxRange, string textSearch)
+        {
+            return await _context.SanPham.Where(n => n.GiaBan >= minRange && n.GiaBan <= maxRange && n.TenSp.Contains(textSearch)).ToListAsync();
+        }
+
         public async Task<List<SanPham>> GetProducts(string textSearch)
         {
             return await _context.SanPham.Where(n => n.TenSp.Contains(textSearch)).ToListAsync();

@@ -10,5 +10,6 @@ namespace backend.Repositories
         Task<List<SanPham>> GetProductByIdCart(int id);
         Task<List<SanPham>> GetListProductNew(string textSearch);
         Task<List<SanPham>> GetProducts(string textSearch);
+        Task<List<SanPham>> GetProductByRange(int minRange, int maxRange, string textSearch);
     }
 }

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\backend",
+    "\\backend\\backend\\Data",
+    "\\frontend",
+    "\\frontend\\css",
+    "\\frontend\\jquery"
+  ],
+  "SelectedNode": "\\backend\\backend\\Data\\DBSHop.cs",
+  "PreviewInSolutionExplorer": false
+}

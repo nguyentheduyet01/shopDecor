@@ -29,7 +29,14 @@ namespace backend.Controllers
             var res = await _productService.GetProducts(pageNumber, pageSize, textSearch);
             return Ok(res);
         }
-       
+
+        // GET: api/Product
+        [HttpGet("GetProductByRange")]
+        public async Task<ActionResult<ProductFilter>> GetProductByRange(int minRange,int maxRange, int pageNumber = 1, int pageSize = 20, string? textSearch = "")
+        {
+            var res = await _productService.GetProductByRange(minRange,maxRange,pageNumber,pageSize,textSearch);
+            return Ok(res);
+        }
         // GET: api/Product
         [HttpGet("GetProductByCategory")]
         public async Task<ActionResult<ProductFilter>> GetProductByCategory(int id,int pageNumber = 1, int pageSize = 20,string? textSearch = "")

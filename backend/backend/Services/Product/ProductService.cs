@@ -68,6 +68,26 @@ namespace backend.Services
             return await _productRepository.GetProductByIdCart(id);
         }
 
+        public async Task<ProductFilter> GetProductByRange(int minRange, int maxRange, int pageNumber, int pageSize, string? textSearch)
+        {
+            if (textSearch == null)
+            {
+                textSearch = string.Empty;
+            }
+            var product = await _productRepository.GetProductByRange(minRange,maxRange,textSearch);
+
+            ProductFilter productFilter = new ProductFilter
+            {
+                CurrentPage = pageNumber,
+                CurrentPageRecord = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).Count(),
+                TotalPage = (int)Math.Ceiling((double)product.Count() / pageSize) > 0 ? (int)Math.Ceiling((double)product.Count() / pageSize) : 1,
+                TotalRecord = product.Count(),
+                Data = product.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList()
+            };
+
+            return productFilter;
+        }
+
         public async Task<ProductFilter> GetProducts(int pageNumber, int pageSize, string? textSearch)
         {
             if(textSearch == null)
