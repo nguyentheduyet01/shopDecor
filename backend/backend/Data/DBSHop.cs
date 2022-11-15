@@ -295,6 +295,7 @@ namespace backend.Data
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("TenSP");
+                entity.Property(e => e.AnhDaiDien).HasColumnName("AnhDaiDien");
 
                 entity.HasOne(d => d.MaLspNavigation)
                     .WithMany(p => p.SanPham)

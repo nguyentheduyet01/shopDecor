@@ -1,4 +1,5 @@
-﻿using backend.Models;
+﻿using backend.Entity;
+using backend.Models;
 using backend.Repositories;
 
 namespace backend.Services
@@ -51,7 +52,7 @@ namespace backend.Services
             return productFilter;
         }
 
-        public async Task<SanPham> GetProductById(int id)
+        public async Task<ProductView> GetProductById(int id)
         {
             return await _productRepository.GetProductById(id);
         }

@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.Entity;
 using backend.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,9 +38,28 @@ namespace backend.Repositories
             return await _context.SanPham.Where(n => n.MaLsp == id && n.TenSp.Contains(textSearch)).ToListAsync();
         }
 
-        public async Task<SanPham> GetProductById(int id)
+        public async Task<ProductView> GetProductById(int id)
         {
-            return await _context.SanPham.FindAsync(id);
+            var product = await _context.SanPham.Where(n => n.MaSp == id).FirstOrDefaultAsync();
+            var images = await _context.Anh.Where(n => n.MaSp == id).ToListAsync();
+
+            var productView = new ProductView
+                            {
+                                MaSp = product.MaSp,
+                                TenSp = product.TenSp,
+                                GiaBan = product.GiaBan,
+                                MoTa = product.MoTa,
+                                SltonHienTai = product.SltonHienTai,
+                                SltonToiThieu = product.SltonToiThieu,
+                                GiaNhap = product.GiaNhap,
+                                KhuyenMai = product.KhuyenMai,
+                                MaLsp = product.MaLsp,
+                            };
+            foreach (var item in images)
+            {
+                productView.LstImage.Add(item.Link);
+            }
+            return productView;
            
         }
 

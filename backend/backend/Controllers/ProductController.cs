@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using backend.Data;
 using backend.Models;
 using backend.Services;
+using backend.Entity;
+
 namespace backend.Controllers
 {
     [Route("api/[controller]")]
@@ -38,13 +40,13 @@ namespace backend.Controllers
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SanPham>> GetProductById(int id)
+        public async Task<ActionResult<ProductView>> GetProductById(int id)
         {
             var res = await _productService.GetProductById(id);
-            if (res == null)
+            if(res == null)
             {
                 return NotFound();
-            }    
+            }
             return Ok(res);
         }
 

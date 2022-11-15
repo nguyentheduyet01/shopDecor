@@ -22,6 +22,7 @@ namespace backend.Models
         public decimal GiaNhap { get; set; }
         public decimal? KhuyenMai { get; set; }
         public int MaLsp { get; set; }
+        public string AnhDaiDien { get; set; }
 
         public virtual LoaiSanPham MaLspNavigation { get; set; }
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDon { get; set; }
