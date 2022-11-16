@@ -528,3 +528,4 @@ C:\Users\Hieu\Desktop\CNPM\shopDecor\backend\backend\obj\Debug\net6.0\scopedcss\
 C:\Users\Hieu\Desktop\CNPM\shopDecor\backend\backend\obj\Debug\net6.0\backend.csproj.CopyComplete
 C:\Users\Hieu\Desktop\CNPM\shopDecor\backend\backend\obj\Debug\net6.0\backend.genruntimeconfig.cache
 C:\Users\Hieu\Desktop\CNPM\shopDecor\backend\backend\obj\Debug\net6.0\ref\backend.dll
+C:\Users\Hieu\Desktop\CNPM\shopDecor\backend\backend\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
