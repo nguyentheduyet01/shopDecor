@@ -6,7 +6,12 @@ $(document).ready(function () {
         let textsearch = document.getElementById("search").value;
         window.location.href = "shop.html??textsearch="+ textsearch;
     })
-   
+    const login = JSON.parse(localStorage.getItem('user'))
+    if (login) {
+        document.getElementById('uname').innerText = login.userName;
+    } else {
+        document.getElementById('uname').innerText = 'Đăng nhập'
+    }
 });
 function GetNews() {
     $.ajax({
@@ -24,7 +29,7 @@ function GetNews() {
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
                         <div class="product-img">
-                            <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="img/bg-img/10.jpg" alt=""></a>
+                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                             <div class=" product-meta d-flex justify-content-center">
                                 <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ</a>
                                 <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
@@ -61,7 +66,7 @@ function GetHots() {
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
                         <div class="product-img">
-                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="img/bg-img/10.jpg" alt=""></a>
+                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
                                 <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
                                 <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
@@ -85,4 +90,28 @@ function GetHots() {
 function login(){
     username = document.getElementById("username").value
     password = document.getElementById("password").value
+}
+function login() {
+    username = document.getElementById("username").value
+    password = document.getElementById("password").value
+    const url = 'https://localhost:7132/api/Account/Login?username=' + username + "&password=" + password
+    console.log("url: " + url)
+    $.ajax({
+        url: url,
+        method: 'POST',
+        contentType: 'application\json',
+        dataType: 'json',
+        error: function (response) {
+            document.getElementById('error-login').innerText = 'Tài khoản hoặc mật khẩu không chính xác!';
+        },
+        success: function (reponse) {
+            document.getElementById('uname').innerText = reponse.userName;
+            localStorage.setItem("user", JSON.stringify(reponse))
+            location.reload();
+            alert('Đăng nhập thành công');
+        },
+        fail: function (response) {
+            alert('Không tồn tại tài khoản');
+        }
+    });
 }

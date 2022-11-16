@@ -257,7 +257,7 @@ function SanPhamTuongTu(maloai){
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
                         <div class="product-img">
-                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="img/bg-img/10.jpg" alt=""></a>
+                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
                                 <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
                                 <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>

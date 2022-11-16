@@ -5,7 +5,6 @@ $(document).ready(function () {
     if(id == undefined)
     getList(1);
     else{
-        document.getElementById("pageindex").style.display = "none";
     getListSearch(id)
     }
 });
@@ -17,6 +16,7 @@ function getList(pageNumber){
         dataType: 'json',
         error: function (response) { },
         success: function (reponse) {
+            
             let tabl = '';
             for (var i = 0; i < reponse.data.length; ++i) {
                 tien = reponse.data[i].giaBan;
@@ -25,7 +25,7 @@ function getList(pageNumber){
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
                         <div class="product-img">
-                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="img/bg-img/10.jpg" alt=""></a>
+                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
                                 <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
                                 <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
@@ -48,12 +48,13 @@ function getList(pageNumber){
 }
 function getListSearch(textSearch){
     $.ajax({
-        url: 'https://localhost:7132/api/Product?pageNumber=1&pageSize=20&textSearch='+textSearch,
+        url: 'https://localhost:7132/api/Product?pageNumber=1&pageSize=9&textSearch='+textSearch,
         method: 'GET',
         contentType: 'application\json',
         dataType: 'json',
         error: function (response) { },
         success: function (reponse) {
+            
             let tabl = '';
             for (var i = 0; i < reponse.data.length; ++i) {
                 tien = reponse.data[i].giaBan;
@@ -62,7 +63,7 @@ function getListSearch(textSearch){
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
                         <div class="product-img">
-                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="img/bg-img/10.jpg" alt=""></a>
+                        <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
                                 <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
                                 <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
@@ -79,6 +80,9 @@ function getListSearch(textSearch){
                 `
             }
             document.getElementById('listproduct').innerHTML = tabl;
+            if(reponse.data.length < 9 ){
+                document.getElementById("pageindex").style.display = "none";
+            }
         },
         fail: function (response) { }
     });
