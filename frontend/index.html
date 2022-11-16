@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
     <title>Alazea - Shop Decor</title>
@@ -60,12 +59,12 @@
                                     </div>
                                 </div> -->
                                 <!-- Login -->
-                                <div class="login">
+                                <div class="login" data-toggle="modal" data-target="#exampleModal">
                                     <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
                                 </div>
                                 <!-- Cart -->
                                 <div class="cart">
-                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity"></span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +102,7 @@
                                     <li><a href="index.html">Trang chủ</a></li>
                                     <li><a href="about.html">Giới thiệu</a></li>
                                     <li><a href="shop.html">Sản phẩm</a></li>
-                                    <li><a href="portfolio.html">Tin tức</a></li>
+                                    <li><a href="single-post.html">Tin tức</a></li>
                                     <li><a href="contact.html">Liên hệ</a></li>
                                 </ul>
 
@@ -119,8 +118,8 @@
 
                     <!-- Search Form -->
                     <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                        <form action="#" method="get" id="getsearch">
+                            <input type="search" name="search" id="search" placeholder="Nhập sản phẩm muốn tìm và nhấn enter...">
                             <button type="submit" class="d-none"></button>
                         </form>
                         <!-- Close Icon -->
@@ -134,7 +133,7 @@
 
     <!-- ##### Hero Area Start ##### -->
     <section class="hero-area">
-        <div class="hero-post-slides owl-carousel">
+        <div class="hero-post-slides owl-carousel" >
 
             <!-- Single Hero Post -->
             <div class="single-hero-post bg-overlay">
@@ -181,110 +180,6 @@
         </div>
     </section>
     <!-- ##### Hero Area End ##### -->
-
-    <!-- ##### About Area Start ##### -->
-    <!-- <section class="about-us-area section-padding-100-0">
-        <div class="container">
-            <div class="row justify-content-between">
-                    <div class="col-12 col-lg-5">
-                        <div class="section-heading">
-                            <h2>VỀ CHÚNG TÔI</h2>
-                            <p>Decor Hà Nội là shop bán đồ decor giá rẻ ở Hà Nội được rất nhiều khách hàng tin tưởng. Chúng tôi đồng hành cùng Quý khách trong việc tư vấn, trang trí và thiết kế nội thất không gian. Nhân viên tại đây luôn nhiệt tình giải đáp mọi thắc mắc của khách hàng từ A đến Z.</p>
-                        </div>
-                        <p>Đồ trang trí tại Công Decor đều được nhập chính hãng với chất lượng cao. Số lượng phong phú và đa dạng kiểu cách, đem lại nhiều màu sắc và phong cách khác nhau.</p>
-
-                        <div class="alazea-progress-bar mb-50">
-                            <div class="single_progress_bar">
-                                <p>Office plants</p>
-                                <div id="bar1" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="80"></span>
-                                </div>
-                            </div>
-
-                            <div class="single_progress_bar">
-                                <p>Field manager</p>
-                                <div id="bar2" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="70"></span>
-                                </div>
-                            </div>
-
-                            <div class="single_progress_bar">
-                                <p>Landscape design</p>
-                                <div id="bar3" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="85"></span>
-                                </div>
-                            </div>
-
-                            <div class="single_progress_bar">
-                                <p>Garden Care</p>
-                                <div id="bar4" class="barfiller">
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                    <span class="fill" data-percentage="65"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                <div class="col-12 col-lg-6">
-                    <div class="alazea-benefits-area">
-                        <div class="row">
-                            <div class="col-12 col-sm-6">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/b1.png" alt="">
-                                    <h5>Quality Products</h5>
-                                    <p>Intiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/b2.png" alt="">
-                                    <h5>Perfect Service</h5>
-                                    <p>Intiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/b3.png" alt="">
-                                    <h5>100% Natural</h5>
-                                    <p>Intiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-6">
-                                <div class="single-benefits-area">
-                                    <img src="img/core-img/b4.png" alt="">
-                                    <h5>Environmentally friendly</h5>
-                                    <p>Intiam eu sagittis est, at commodo lacini libero. Praesent dignissim sed odio vel aliquam manta lagorn.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="border-line"></div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-    <!-- ##### About Area End ##### -->
 
     <!-- ##### Portfolio Area Start ##### -->
     <section class="alazea-portfolio-area section-padding-100-0">
@@ -457,53 +352,6 @@
                                 </div>
                             </div>
                         </div>
-<!-- 
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/14.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <div class="section-heading">
-                                            <h2>TESTIMONIAL</h2>
-                                            <p>Some kind words from clients about Alazea</p>
-                                        </div>
-                                        <p>“Alazea is a pleasure to work with. Their ideas are creative, they came up with imaginative solutions to some tricky issues, their landscaping and planting contacts are equally excellent we have a beautiful but also manageable garden as a result. Thank you!”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>Mr. Nazrul Islam</h6>
-                                            <p>CEO of NAVATECH</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="single-testimonial-slide">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-thumb">
-                                        <img src="img/bg-img/15.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="testimonial-content">
-                                        <div class="section-heading">
-                                            <h2>TESTIMONIAL</h2>
-                                            <p>Some kind words from clients about Alazea</p>
-                                        </div>
-                                        <p>“Alazea is a pleasure to work with. Their ideas are creative, they came up with imaginative solutions to some tricky issues, their landscaping and planting contacts are equally excellent we have a beautiful but also manageable garden as a result. Thank you!”</p>
-                                        <div class="testimonial-author-info">
-                                            <h6>Mr. Jonas Nick</h6>
-                                            <p>CEO of NAVATECH</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
                 </div>
             </div>
@@ -523,15 +371,13 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id = "listnews">
 
                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <!-- <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Product Image -->
                         <div class="product-img">
                             <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
-                            <!-- Product Tag -->
                             <div class="product-tag">
                                 <a href="#">Hot</a>
                             </div>
@@ -541,7 +387,6 @@
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                             </div>
                         </div>
-                        <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
                             <a href="shop-details.html">
                                 <p>Cactus Flower</p>
@@ -549,12 +394,11 @@
                             <h6>$10.99</h6>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
+                <!-- <div class="col-12 col-sm-6 col-lg-3">
                     <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
                         <div class="product-img">
                             <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
                             <div class="product-meta d-flex">
@@ -563,7 +407,6 @@
                                 <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
                             </div>
                         </div>
-                        <!-- Product Info -->
                         <div class="product-info mt-15 text-center">
                             <a href="shop-details.html">
                                 <p>Cactus Flower</p>
@@ -571,55 +414,7 @@
                             <h6>$10.99</h6>
                         </div>
                     </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
 
                 <div class="col-12 text-center">
                     <a href="#" class="btn alazea-btn">View All</a>
@@ -639,105 +434,9 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id = "listhot">
 
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="100ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/9.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/10.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/11.jpg" alt=""></a>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Single Product Area -->
-                <div class="col-12 col-sm-6 col-lg-3">
-                    <div class="single-product-area mb-50 wow fadeInUp" data-wow-delay="400ms">
-                        <!-- Product Image -->
-                        <div class="product-img">
-                            <a href="shop-details.html"><img src="img/bg-img/12.jpg" alt=""></a>
-                            <!-- Product Tag -->
-                            <div class="product-tag sale-tag">
-                                <a href="#">Hot</a>
-                            </div>
-                            <div class="product-meta d-flex">
-                                <a href="#" class="wishlist-btn"><i class="icon_heart_alt"></i></a>
-                                <a href="cart.html" class="add-to-cart-btn">Add to cart</a>
-                                <a href="#" class="compare-btn"><i class="arrow_left-right_alt"></i></a>
-                            </div>
-                        </div>
-                        <!-- Product Info -->
-                        <div class="product-info mt-15 text-center">
-                            <a href="shop-details.html">
-                                <p>Cactus Flower</p>
-                            </a>
-                            <h6>$10.99</h6>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 text-center">
+                               <div class="col-12 text-center">
                     <a href="#" class="btn alazea-btn">View All</a>
                 </div>
 
@@ -1034,6 +733,63 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="display:table">
+            <div class="modal-content" style="width:max-content; background: none; border: none;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                      <div class="col col-xl-10">
+                        <div class="card" style="border-radius: 1rem;">
+                          <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                              <img src="img/bg-img/anh-login.jpg"
+                                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                              <div class="card-body p-4 p-lg-5 text-black">
+                
+                                <form>
+                
+                                  <div class="d-flex align-items-center mb-3 pb-1">
+                                    
+                                    <span class="h1 fw-bold mb-0">Alazea</span>
+                                  </div>
+                
+                                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập vào tài khoản của bạn</h5>
+                
+                                  <div class="form-outline mb-4">
+                                    <input type="email" id="username" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form2Example17">Tên đăng nhập</label>
+                                  </div>
+                
+                                  <div class="form-outline mb-4">
+                                    <input type="password" id="password" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form2Example27">Mật khẩu</label>
+                                  </div>
+
+                                    <label class="form-label text-danger" id="error-login" >Tài khoản hoặc mật khẩu không chính xác!</label>
+                
+                                  <div class="pt-1 mb-4">
+                                    <button class="btn btn-dark btn-lg btn-block" type="button" onclick="login()">Login</button>
+                                  </div>
+                
+                                  <a class="small text-muted" href="#!">Forgot password?</a>
+                                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
+                                      style="color: #393f81;">Register here</a></p>
+                                  <a href="#!" class="small text-muted">Terms of use.</a>
+                                  <a href="#!" class="small text-muted">Privacy policy</a>
+                                </form>
+                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>        
+    </div>
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
@@ -1047,6 +803,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="js/active.js"></script>
+    <!-- Jquery -->
+    <script src="jquery/index.js"></script>
 </body>
 
 </html>
