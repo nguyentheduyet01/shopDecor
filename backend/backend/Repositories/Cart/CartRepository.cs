@@ -82,6 +82,22 @@ namespace backend.Repositories
             return item;
         }
 
+        public async Task<int> DeleteProductToCart(int idUser, int idProduct)
+        {
+            var entity = _context.HoaDon.Where(n => n.IdKhachHang == idUser && n.TrangThai == "Gio Hang").FirstOrDefault();
+            if(entity != null)
+            {
+                var productCart = _context.ChiTietHoaDon.Where(n => n.MaSp == idProduct && n.MaHd == entity.MaHd).FirstOrDefault();
+                if(productCart != null)
+                {
+                    _context.ChiTietHoaDon.Remove(productCart);
+                    _context.SaveChanges();
+                }
+                return 1;
+            }
+            return 0;
+        }
+
         public async Task<int> EditProductToCart(ChiTietHoaDon item)
         {
             var entity = _context.ChiTietHoaDon.Where(n => n.MaHd == item.MaHd && n.MaSp == item.MaSp).FirstOrDefault();

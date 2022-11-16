@@ -38,10 +38,15 @@ namespace backend.Controllers
         }
 
         [HttpDelete("DeleteProductToCart")]
-        public async Task<ActionResult> DeleteProductToCart(ChiTietHoaDon item)
+        public async Task<ActionResult> DeleteProductToCart(int idUser,int idProduct)
         {
-            var res = await _cartService.DeleteProductToCart(item);
-            return StatusCode(200, res);
+            var res = await _cartService.DeleteProductToCart(idUser,idProduct);
+            if (res > 0)
+            {
+                return StatusCode(200, res);
+            }
+            return StatusCode(500,res);
+            
         }
     }
 }

@@ -7,7 +7,7 @@ namespace backend.Services
     {
         
         Task <int> EditProductToCart(ChiTietHoaDon item);
-        Task <ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item);
+        Task <int> DeleteProductToCart(int idUser,int idProduct);
         Task<int> AddProductToCart(int idCustomer, int idProduct, int count);
     }
 }
