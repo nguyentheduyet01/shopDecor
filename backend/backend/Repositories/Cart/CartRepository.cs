@@ -71,6 +71,30 @@ namespace backend.Repositories
             return count;
         }
 
+        public async Task<bool> Checkout(int userId)
+        {
+            var bill = _context.HoaDon.Where(n => n.IdKhachHang == userId && n.TrangThai == "Gio Hang").FirstOrDefault();
+            if (bill != null)
+            {
+                bill.TrangThai = "Đã thanh toán";
+                var chiTietHd = _context.ChiTietHoaDon.Where(n => n.MaHd == bill.MaHd).ToList();
+
+                foreach(var item in chiTietHd)
+                {
+                    var product = _context.SanPham.Where(n => n.MaSp == item.MaSp).FirstOrDefault();
+                    if(product != null)
+                    {
+                        product.SltonHienTai -= item.SoLuong;
+                    }
+                }
+
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+            
+        }
+
         public async Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item)
         {
             var entity = _context.ChiTietHoaDon.Where(n => n.MaHd == item.MaHd && n.MaSp == item.MaSp).FirstOrDefault();

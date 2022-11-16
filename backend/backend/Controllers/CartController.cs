@@ -29,6 +29,12 @@ namespace backend.Controllers
             var res = await _cartService.AddProductToCart(idCustomer,idProduct,count);
             return StatusCode(200, res);
         }
+        [HttpPost("CheckoutCart")]
+        public async Task<ActionResult> Checkout(int userId)
+        {
+            var res = await _cartService.Checkout(userId);
+            return StatusCode(200, res);
+        }
 
         [HttpPut("EditProductToCart")]
         public async Task<ActionResult> EditProductToCart(ChiTietHoaDon item)

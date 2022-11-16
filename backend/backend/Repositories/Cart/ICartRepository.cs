@@ -11,5 +11,6 @@ namespace backend.Repositories
 
         List<CartProductView> GetProductsByUserId (int userId);
         Task<int> DeleteProductToCart(int idUser, int idProduct);
+        Task<bool> Checkout(int userId);
     }
 }
