@@ -60,12 +60,12 @@
                                     </div>
                                 </div> -->
                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
+                                <div class="login" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span id= "uname">Đăng nhập</span></a>
                                 </div>
                                 <!-- Cart -->
                                 <div class="cart">
-                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Giỏ hàng <span class="cart-quantity"></span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                     <li><a href="index.html">Trang chủ</a></li>
                                     <li><a href="about.html">Giới thiệu</a></li>
                                     <li><a href="shop.html">Sản phẩm</a></li>
-                                    <li><a href="portfolio.html">Tin tức</a></li>
+                                    <li><a href="single-post.html">Tin tức</a></li>
                                     <li><a href="contact.html">Liên hệ</a></li>
                                 </ul>
 
@@ -119,8 +119,8 @@
 
                     <!-- Search Form -->
                     <div class="search-form">
-                        <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                        <form action="#" method="get" id="getsearch">
+                            <input type="search" name="search" id="search" placeholder="Nhập sản phẩm muốn tìm và nhấn enter...">
                             <button type="submit" class="d-none"></button>
                         </form>
                         <!-- Close Icon -->
