@@ -16,19 +16,19 @@ namespace backend.Repositories
         public async Task<List<SanPham>> GetListProductNew(string textSearch)
         {
             // Lấy id các sản phẩm đã nhập k trong tháng này
-            var productsOldId = from p in _context.PhieuNhapKho
-                                       where p.NgayNhap.Month != DateTime.Now.Month
-                                       join c in _context.ChiTietPhieuNhap on p.MaPnk equals c.MaPnk
-                                       select c.MaPnk;
+            var productId = from p in _context.PhieuNhapKho
+                                where p.NgayNhap.Year == DateTime.Now.Year && DateTime.Now.Month - p.NgayNhap.Month <= 3
+                                join c in _context.ChiTietPhieuNhap on p.MaPnk equals c.MaPnk
+                                select c.MaSp;
 
-            // Lấy id các sản phẩm nhập trong tháng này mà các tháng trước chưa từng nhập (sản phẩm mới)
-            var productsNewId = from p in _context.PhieuNhapKho
-                           where p.NgayNhap.Month == DateTime.Now.Month && p.NgayNhap.Year == DateTime.Now.Year
-                           join c in _context.ChiTietPhieuNhap on p.MaPnk equals c.MaPnk
-                           where productsOldId.ToList().Contains(c.MaSp) == false
-                           select c.MaSp;
-            
-            return await _context.SanPham.Where(n => productsNewId.Contains(n.MaSp) && n.TenSp.Contains(textSearch)).ToListAsync();
+            //// Lấy id các sản phẩm nhập trong tháng này mà các tháng trước chưa từng nhập (sản phẩm mới)
+            //var productsNewId = from p in _context.PhieuNhapKho
+            //               where p.NgayNhap.Month == DateTime.Now.Month && p.NgayNhap.Year == DateTime.Now.Year
+            //               join c in _context.ChiTietPhieuNhap on p.MaPnk equals c.MaPnk
+            //               where productsOldId.ToList().Contains(c.MaSp) == false
+            //               select c.MaSp;
+
+            return await _context.SanPham.Where(n => productId.Contains(n.MaSp)).ToListAsync();
             
             
         }
