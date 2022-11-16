@@ -1,4 +1,5 @@
 ﻿using backend.Data;
+using backend.Entity;
 using backend.Models;
 
 namespace backend.Repositories
@@ -6,9 +7,11 @@ namespace backend.Repositories
     public class CartRepository : ICartRepository
     {
         private readonly DBSHop _context;
+       
         public CartRepository(DBSHop context)
         {
             _context = context;
+            
         }
 
         public async Task<int> AddProductToCart(ChiTietHoaDon item, int idCustomer)
@@ -90,6 +93,34 @@ namespace backend.Repositories
                 return 1;
             }
             else return 0;
+        }
+
+        public  List<CartProductView> GetProductsByUserId(int userId)
+        {
+            var cart = _context.HoaDon.Where(n => n.IdKhachHang == userId && n.TrangThai == "Gio Hang").FirstOrDefault();
+            if(cart != null)
+            {
+                var cartProducts = _context.ChiTietHoaDon.Where(n => n.MaHd == cart.MaHd).ToList();
+
+                List<CartProductView> lstProductView = new List<CartProductView>();
+                foreach (var item in cartProducts)
+                {
+                    var product = _context.SanPham.Where(n => n.MaSp == item.MaSp).FirstOrDefault();
+                    var cartProductView = new CartProductView
+                    {
+                        MaSp = item.MaSp,
+                        TenSp = product.TenSp,
+                        GiaBan = product.GiaBan,
+                        MaLsp = product.MaLsp,
+                        AnhDaiDien = product.AnhDaiDien
+
+                    };
+                    lstProductView.Add(cartProductView);
+                }
+                return lstProductView;
+
+            }
+            return null;
         }
     }
 }

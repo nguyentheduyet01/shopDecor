@@ -13,10 +13,12 @@ namespace backend.Services
 
         private readonly IConfiguration _config;
         private readonly IAccountRepository _accountRepository;
-        public AccountService(IAccountRepository accountRepository, IConfiguration config)
+        private readonly ICartRepository _cartRepository;
+        public AccountService(IAccountRepository accountRepository, IConfiguration config,ICartRepository cartRepository)
         {
             _config = config;
             _accountRepository = accountRepository;
+            _cartRepository = cartRepository;
         }
         public async Task<AccountView> Login(string username, string password)
         {
@@ -28,6 +30,7 @@ namespace backend.Services
             else
             {
                 var user = await _accountRepository.getUser(account.IdnguoiDung);
+                var cartProduct = _cartRepository.GetProductsByUserId(account.IdnguoiDung).ToList();
                 var tokenStr = GenerateJWT(account);
                 AccountView accoutView = new AccountView
                 {
@@ -39,7 +42,9 @@ namespace backend.Services
                     PhoneNumber = user.Sdt,
                     Address = user.DiaChi,
                     Gender = user.GioiTinh,
+                    CartProducts = cartProduct,
                     token = tokenStr
+                    
                 };
                 return accoutView;
             }

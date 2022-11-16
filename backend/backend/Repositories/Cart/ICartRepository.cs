@@ -1,4 +1,5 @@
-﻿using backend.Models;
+﻿using backend.Entity;
+using backend.Models;
 
 namespace backend.Repositories
 {
@@ -8,5 +9,7 @@ namespace backend.Repositories
         Task<int> EditProductToCart(ChiTietHoaDon item);
         Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item);
         Task<int> AddProductToCart(int idCustomer, int idProduct, int count);
+
+        List<CartProductView> GetProductsByUserId (int userId);
     }
 }

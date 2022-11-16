@@ -22,6 +22,6 @@ namespace backend.Entity
 
         public string? token { get; set; }
 
-        public List<ChiTietHoaDon> CartProducts { get; set; } = new List<ChiTietHoaDon>();
+        public List<CartProductView> CartProducts { get; set; } = new List<CartProductView>();
     }
 }
