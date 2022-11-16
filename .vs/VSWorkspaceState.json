@@ -2,11 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\backend",
     "\\backend\\backend\\Data",
     "\\frontend",
     "\\frontend\\css",
     "\\frontend\\jquery"
   ],
+  "SelectedNode": "\\frontend\\jquery\\shop-details.js",
   "PreviewInSolutionExplorer": false
 }

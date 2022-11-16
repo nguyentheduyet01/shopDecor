@@ -120,7 +120,7 @@ namespace backend.Repositories
                 return lstProductView;
 
             }
-            return null;
+            return new List<CartProductView>();
         }
     }
 }
