@@ -20,7 +20,7 @@ builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
 }));
 
-//builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICartService, CartService>();
 

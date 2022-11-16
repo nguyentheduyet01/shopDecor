@@ -37,6 +37,37 @@ namespace backend.Repositories
             
         }
 
+        public async Task<int> AddProductToCart(int idCustomer, int idProduct, int count)
+        {
+            var cartMaster =  _context.HoaDon.Where(n => n.IdKhachHang == idCustomer && n.TrangThai == "Gio Hang").FirstOrDefault();
+            var product = _context.SanPham.Where(n => n.MaSp == idProduct).FirstOrDefault();
+            if (cartMaster == null && product != null)
+            {
+                HoaDon hd = new HoaDon
+                {
+                    IdKhachHang = idCustomer,
+                    TongGia = product.GiaBan * count,
+                    TrangThai = "Gio Hang",
+                    NgayLap = DateTime.Now
+                };
+
+                cartMaster = hd;
+
+                _context.HoaDon.Add(hd);
+                _context.SaveChanges();
+
+            }
+            var productDetail = new ChiTietHoaDon
+            {
+                SoLuong = count,
+                MaHd = cartMaster.MaHd,
+                MaSp = idProduct
+            };
+            _context.ChiTietHoaDon.Add(productDetail);
+            _context.SaveChanges();
+            return count;
+        }
+
         public async Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item)
         {
             var entity = _context.ChiTietHoaDon.Where(n => n.MaHd == item.MaHd && n.MaSp == item.MaSp).FirstOrDefault();

@@ -4,8 +4,9 @@ namespace backend.Repositories
 {
     public interface ICartRepository
     {
-        Task<int> AddProductToCart(ChiTietHoaDon item,int idCustomer);
+        
         Task<int> EditProductToCart(ChiTietHoaDon item);
         Task<ChiTietHoaDon> DeleteProductToCart(ChiTietHoaDon item);
+        Task<int> AddProductToCart(int idCustomer, int idProduct, int count);
     }
 }
