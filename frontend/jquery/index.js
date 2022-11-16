@@ -87,10 +87,6 @@ function GetHots() {
         fail: function (response) { }
     });
 }
-function login(){
-    username = document.getElementById("username").value
-    password = document.getElementById("password").value
-}
 function login() {
     username = document.getElementById("username").value
     password = document.getElementById("password").value
@@ -108,10 +104,8 @@ function login() {
             document.getElementById('uname').innerText = reponse.userName;
             localStorage.setItem("user", JSON.stringify(reponse))
             location.reload();
-            alert('Đăng nhập thành công');
         },
         fail: function (response) {
-            alert('Không tồn tại tài khoản');
         }
     });
 }

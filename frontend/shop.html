@@ -60,12 +60,12 @@
                                     </div>
                                 </div> -->
                                 <!-- Login -->
-                                <div class="login">
-                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>Login</span></a>
+                                <div class="login" data-toggle="modal" data-target="#exampleModal">
+                                    <a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span id= "uname">Đăng nhập</span></a>
                                 </div>
                                 <!-- Cart -->
                                 <div class="cart">
-                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart <span class="cart-quantity">(1)</span></span></a>
+                                    <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Giỏ hàng <span class="cart-quantity"></span></span></a>
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                     <li><a href="index.html">Trang chủ</a></li>
                                     <li><a href="about.html">Giới thiệu</a></li>
                                     <li><a href="shop.html">Sản phẩm</a></li>
-                                    <li><a href="portfolio.html">Tin tức</a></li>
+                                    <li><a href="single-post.html">Tin tức</a></li>
                                     <li><a href="contact.html">Liên hệ</a></li>
                                 </ul>
 
@@ -169,7 +169,7 @@
                         <div class="search_by_terms">
                             <form action="#" method="post" class="form-inline">
                                 <select class="custom-select widget-title">
-                                  <option selected>Short by Popularity</option>
+                                  <option selected value="0">Short by Popularity</option>
                                   <option value="1">Short by Newest</option>
                                   <option value="2">Short by Sales</option>
                                   <option value="3">Short by Ratings</option>
@@ -203,8 +203,8 @@
                                     </div>
                                     <div class="range-price">Price:vnđ 50000 - vnđ 5000000 </div>
                                 </div> -->
-                                <input type="range" class="form-range" min="50000" max="500000" value="500000" id="customRange2">
-                                <div id="range-price">Price: 50000 - 5000000 vnđ</div>
+                                <input type="range" class="form-range" min="50000" max="10000000" value="3000000" id="customRange2">
+                                <div id="range-price">Price: 50.000 - 10.0000.000 vnđ</div>
                             </div>
                         </div>
 
@@ -532,8 +532,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script>
         //  console.log(document.getElementById("customRange2"))
     document.getElementById("customRange2").addEventListener('change',(e)=>{
-        document.getElementById("range-price").innerHTML = `Price: 50000 - ${e.target.value} vnđ`;
-
+        document.getElementById("range-price").innerHTML = `Price: 50.000 - ${e.target.value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} vnđ`;
+        fillter(e.target.value);
     })
     </script>
 </body>
