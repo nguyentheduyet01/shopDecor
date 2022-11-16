@@ -112,7 +112,8 @@ namespace backend.Repositories
                         TenSp = product.TenSp,
                         GiaBan = product.GiaBan,
                         MaLsp = product.MaLsp,
-                        AnhDaiDien = product.AnhDaiDien
+                        AnhDaiDien = product.AnhDaiDien,
+                        SoLuong = item.SoLuong
 
                     };
                     lstProductView.Add(cartProductView);
