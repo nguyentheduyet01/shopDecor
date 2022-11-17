@@ -1,10 +1,10 @@
 $(document).ready(function () {
     GetNews();
     GetHots();
-    document.getElementById("getsearch").addEventListener('submit',(e)=>{
+    document.getElementById("getsearch").addEventListener('submit', (e) => {
         e.preventDefault()
         let textsearch = document.getElementById("search").value;
-        window.location.href = "shop.html??textsearch="+ textsearch;
+        window.location.href = "shop.html??textsearch=" + textsearch;
     })
     const login = JSON.parse(localStorage.getItem('user'))
     if (login) {
@@ -31,8 +31,7 @@ function GetNews() {
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                             <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ</a>
-                                <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
+                                <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ</a>
                             </div>
                         </div>
                         <div class="product-info mt-15 text-center">
@@ -68,9 +67,8 @@ function GetHots() {
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
-                                <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
-                            </div>
+                        <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ</a>
+                        </div>
                         </div>
                         <div class="product-info mt-15 text-center">
                             <a href="shop-details.html">
@@ -108,5 +106,37 @@ function login() {
         },
         fail: function (response) {
         }
+    });
+}
+function addtocart(spId) {
+    const login = JSON.parse(localStorage.getItem('user'))
+    if (login) {
+        $.ajax({
+            url: 'https://localhost:7132/api/Cart/AddProductToCart?idCustomer=' + login.idUser + '&idProduct=' + spId + '&count=1',
+            method: 'POST',
+            contentType: 'application\json',
+            dataType: 'json',
+            error: function (response) { },
+            success: function (reponse) {
+                alert("Thêm vào giỏ hàng thành công!")
+                getcart(login.idUser);
+            },
+            fail: function (response) { }
+        });
+    } else {
+       alert("Bạn cần đăng nhập để thêm vào giỏ hàng")
+    }
+}
+function getcart(iduser) {
+    $.ajax({
+        url: 'https://localhost:7132/api/Product/GetProductByIdUser?id=' + iduser,
+        method: 'GET',
+        contentType: 'application\json',
+        dataType: 'json',
+        error: function (response) { },
+        success: function (reponse) {
+            localStorage.setItem("cartProducts", JSON.stringify(reponse))
+        },
+        fail: function (response) { }
     });
 }

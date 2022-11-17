@@ -218,7 +218,7 @@
                         </div>
                         <div class="total d-flex justify-content-between">
                             <h5>Tổng tiền</h5>
-                            <h5 id="totalPrice">$9.99</h5>
+                            <h5 id="totalPrice">0 ₫</h5>
                         </div>
                         <div class="checkout-btn">
                             <a href="#" class="btn alazea-btn w-100">Thanh toán</a>
@@ -364,6 +364,63 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="display:table">
+            <div class="modal-content" style="width:max-content; background: none; border: none;">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                      <div class="col col-xl-10">
+                        <div class="card" style="border-radius: 1rem;">
+                          <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                              <img src="img/bg-img/anh-login.jpg"
+                                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem; height: 100%;" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                              <div class="card-body p-4 p-lg-5 text-black">
+                
+                                <form>
+                
+                                  <div class="d-flex align-items-center mb-3 pb-1">
+                                    
+                                    <span class="h1 fw-bold mb-0">Alazea</span>
+                                  </div>
+                
+                                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập vào tài khoản của bạn</h5>
+                
+                                  <div class="form-outline mb-4">
+                                    <input type="email" id="username" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form2Example17">Tên đăng nhập</label>
+                                  </div>
+                
+                                  <div class="form-outline mb-4">
+                                    <input type="password" id="password" class="form-control form-control-lg" />
+                                    <label class="form-label" for="form2Example27">Mật khẩu</label>
+                                  </div>
+
+                                    <label class="form-label text-danger" id="error-login" ></label>
+                
+                                  <div class="pt-1 mb-4">
+                                    <button class="btn btn-dark btn-lg btn-block" type="button" onclick="login()">Login</button>
+                                  </div>
+                
+                                  <a class="small text-muted" href="#!">Forgot password?</a>
+                                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
+                                      style="color: #393f81;">Register here</a></p>
+                                  <a href="#!" class="small text-muted">Terms of use.</a>
+                                  <a href="#!" class="small text-muted">Privacy policy</a>
+                                </form>
+                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>        
+    </div>
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
@@ -378,6 +435,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <!-- Active js -->
     <script src="js/active.js"></script>
     <script src="jquery/cart.js"></script>
+
+    <script src="jquery/index.js"></script>
 </body>
 
 </html>

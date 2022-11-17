@@ -2,6 +2,7 @@ $(document).ready(function () {
     listProducts = JSON.parse(localStorage.getItem('cartProducts'))
     if (listProducts) {
         getProductToCart();
+        sumThanhToan();
     } else {
 
     }
@@ -18,13 +19,13 @@ function getProductToCart() {
                                     </td>
                                     <td class="qty">
                                         <div class="quantity">
-                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;changecount(${i},${listProducts[i].giaBan});return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
                                             <input type="number" class="qty-text" id="qty${i}" step="1" min="1" max="99" name="quantity" value="${listProducts[i].soLuong}" onchange="changecount(${i},${listProducts[i].giaBan})">
-                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;changecount(${i},${listProducts[i].giaBan});return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                         </div>
                                     </td>
-                                    <td class="price"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} đ</span></td>
-                                    <td class="total_price" id="sum${i}"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} đ</span></td>
+                                    <td class="price"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} ₫</span></td>
+                                    <td class="total_price" id="sum${i}"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} ₫</span></td>
                                     <td class="action"><div onclick ="deleteItem(${listProducts[i].maSp})"><i class="icon_close"></i></div></td>
                                 </tr>
     `
@@ -32,9 +33,13 @@ function getProductToCart() {
     document.getElementById("productList").innerHTML = showlist;
 }
 function changecount(i, giaBan) {
+    listProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    listProducts[i].soLuong = (document.getElementById('qty' + i).value);
+    localStorage.setItem("cartProducts", JSON.stringify(listProducts));
+    sumThanhToan()
     let gia = ''
     gia += (document.getElementById('qty' + i).value) * giaBan
-    document.getElementById('sum' + i).innerHTML = gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "đ";
+    document.getElementById('sum' + i).innerHTML = gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " ₫";
 }
 function deleteItem(idproduct) {
 
@@ -61,10 +66,20 @@ function deleteItem(idproduct) {
                     }
                 }
                 getProductToCart()
+                sumThanhToan()
             },
             fail: function (response) { }
         });
     } else {
 
     }
+}
+function sumThanhToan(){
+    listProducts = JSON.parse(localStorage.getItem('cartProducts'));
+    let sum = 0;
+    for(var i=0;i< listProducts.length;i++){
+        sum += listProducts[i].soLuong * listProducts[i].giaBan;
+
+    }
+    document.getElementById("totalPrice").innerHTML = sum.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " ₫";
 }

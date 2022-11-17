@@ -9,6 +9,7 @@ using backend.Data;
 using backend.Models;
 using backend.Services;
 using backend.Entity;
+using backend.Repositories;
 
 namespace backend.Controllers
 {
@@ -18,9 +19,11 @@ namespace backend.Controllers
     {
         
         private readonly IProductService _productService;
-        public ProductController(DBSHop context, IProductService productService)
+        private readonly ICartRepository _productRepository;
+        public ProductController(DBSHop context, IProductService productService, ICartRepository productRepository)
         {
             _productService = productService;
+            _productRepository = productRepository;
         }
 
         [HttpGet]
@@ -58,11 +61,11 @@ namespace backend.Controllers
         }
 
         
-        [HttpGet("GetProductByIdCart")]
-        public async Task<ActionResult<List<SanPham>>> GetProductByIdCart(int id)
+        [HttpGet("GetProductByIdUser")]
+        public async Task<ActionResult<List<CartProductView>>> GetProductByIdCart(int id)
         {
-            var res = await _productService.GetProductByIdCart(id);
-            return res;
+                var res =  _productRepository.GetProductsByUserId(id);
+                return res;
         }
         [HttpGet("GetListProductNew")]
         public async Task<ActionResult<List<SanPham>>> GetListProductNew(int pageNumber = 1, int pageSize = 20, string? textSearch = "")
