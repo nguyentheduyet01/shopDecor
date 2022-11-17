@@ -1,57 +1,70 @@
-
-
-
-var user = JSON.parse(localStorage.getItem("user"));
 $(document).ready(function () {
-    if(user){
-        
-        getItemCart()
+    listProducts = JSON.parse(localStorage.getItem('cartProducts'))
+    if (listProducts) {
+        getProductToCart();
+    } else {
+
     }
-    
 });
-// .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
-function getItemCart(){
-    $("cart-table tbody").html();
-    let productHtml = "",
-        totalPrice = 0;
-    for(let i = 0; i < user.cartProducts.length; i++){
-        let item = user.cartProducts[i]
-        let product = `<tr>
-        <td class="cart_product_img">
-            <a href="#"><img src="./assets/img/${item.anhDaiDien}.jpg" alt="Product"></a>
-            <h5>${item.tenSp}</h5>
-        </td>
-        <td class="qty">
-            <div class="quantity">
-                <span class="qty-minus cursor-pointer" onclick="minus(${item.maSp})"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                <input type="text" class="qty-text" step="1" id="product${item.maSp}"  name="quantity" value="${item.soLuong}">
-                <span class="qty-plus cursor-pointer" onclick="plus(${item.maSp})"><i class="fa fa-plus" aria-hidden="true"></i></span>
-            </div>
-        </td>   
-        <td class="price"><span>${item.giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</span></td>
-        <td class="total_price"><span>${(item.giaBan * item.soLuong).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")}</span></td>
-        <td class="action"><a href="#"><i class="icon_close" ></i></a></td>
-    </tr>`
-        productHtml += product;
-        totalPrice += (item.giaBan * item.soLuong);
+function getProductToCart() {
+    listProducts = JSON.parse(localStorage.getItem('cartProducts'))
+    let showlist = '';
+    for (var i = 0; i < listProducts.length; i++) {
+        showlist += `
+    <tr>
+                                    <td class="cart_product_img">
+                                        <a href="#"><img src="assets/img/${listProducts[i].anhDaiDien}.jpg" alt="Product"></a>
+                                        <h5>${listProducts[i].tenSp}</h5>
+                                    </td>
+                                    <td class="qty">
+                                        <div class="quantity">
+                                            <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                            <input type="number" class="qty-text" id="qty${i}" step="1" min="1" max="99" name="quantity" value="${listProducts[i].soLuong}" onchange="changecount(${i},${listProducts[i].giaBan})">
+                                            <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                        </div>
+                                    </td>
+                                    <td class="price"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} đ</span></td>
+                                    <td class="total_price" id="sum${i}"><span>${listProducts[i].giaBan.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")} đ</span></td>
+                                    <td class="action"><div onclick ="deleteItem(${listProducts[i].maSp})"><i class="icon_close"></i></div></td>
+                                </tr>
+    `
     }
-    
-   
-    document.getElementById("productList").innerHTML = productHtml;
-    document.getElementById("totalPrice").innerHTML = totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    document.getElementById("productList").innerHTML = showlist;
 }
-function minus(productId){
-    
-    let value = document.getElementById("product" + productId).value;
-    if(parseInt(value) > 1){
-        document.getElementById("product" + productId).value = parseInt(value) - 1;
+function changecount(i, giaBan) {
+    let gia = ''
+    gia += (document.getElementById('qty' + i).value) * giaBan
+    document.getElementById('sum' + i).innerHTML = gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + "đ";
+}
+function deleteItem(idproduct) {
+
+    const user = JSON.parse(localStorage.getItem('user'))
+    if (user) {
+        idUser = user.idUser;
+        var token = user.token
+        console.log("token", token)
+        $.ajax({
+            url: 'https://localhost:7132/api/Cart/DeleteProductToCart?idUser=' + idUser + "&idProduct=" + idproduct,
+            method: 'DELETE',
+            headers: {
+                Authorization: 'Bearer ' + token
+            },
+            contentType: 'application\json',
+            dataType: 'json',
+            error: function (response) { },
+            success: function (reponse) {
+                listProducts = JSON.parse(localStorage.getItem('cartProducts'))
+                for (var i = 0; i < listProducts.length; i++) {
+                    if (listProducts[i].maSp == idproduct) {
+                        listProducts.splice(i, 1)
+                        localStorage.setItem("cartProducts", JSON.stringify(listProducts))
+                    }
+                }
+                getProductToCart()
+            },
+            fail: function (response) { }
+        });
+    } else {
+
     }
-}
-
-function plus(productId){
-    let value = document.getElementById("product" + productId).value;
-        document.getElementById("product" + productId).value = parseInt(value) + 1;
-
-        
-        
 }

@@ -103,6 +103,7 @@ function login() {
         success: function (reponse) {
             document.getElementById('uname').innerText = reponse.userName;
             localStorage.setItem("user", JSON.stringify(reponse))
+            localStorage.setItem("cartProducts", JSON.stringify(reponse.cartProducts))
             location.reload();
         },
         fail: function (response) {
