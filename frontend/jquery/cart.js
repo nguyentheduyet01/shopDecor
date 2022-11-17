@@ -88,14 +88,16 @@ function sumThanhToan(){
 function closePopUp(){
     document.getElementById("btn-close").onclick = function(){
         document.getElementById("pop-up-container").style.visibility = 'hidden';
+        callapiThanhtoan()
+
     }
 }
 function checkOut(){
     document.getElementById("checkout-button").onclick = function(){
         listProducts = JSON.parse(localStorage.getItem('cartProducts'))
     if (listProducts) {
+        localStorage.setItem("cartProducts", JSON.stringify([]))
         document.getElementById("pop-up-container").style.visibility = 'visible';
-        callapiThanhtoan()
     } else {
 
     }
@@ -106,12 +108,13 @@ function callapiThanhtoan(){
     const user = JSON.parse(localStorage.getItem('user'))
     $.ajax({
         url: 'https://localhost:7132/api/Cart/CheckoutCart?userId=' + user.idUser,
-        method: 'GET',
+        method: 'POST',
         contentType: 'application\json',
         dataType: 'json',
         error: function (response) { },
         success: function (reponse) {
-            localStorage.setItem("cartProducts", JSON.stringify(reponse))
+            location.reload()
+
         },
         fail: function (response) { }
     });
