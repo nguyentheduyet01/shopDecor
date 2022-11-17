@@ -29,6 +29,12 @@ namespace backend.Controllers
             var res = await _cartService.AddProductToCart(idCustomer,idProduct,count);
             return StatusCode(200, res);
         }
+        [HttpPost("CheckoutCart")]
+        public async Task<ActionResult> Checkout(int userId)
+        {
+            var res = await _cartService.Checkout(userId);
+            return StatusCode(200, res);
+        }
 
         [HttpPut("EditProductToCart")]
         public async Task<ActionResult> EditProductToCart(ChiTietHoaDon item)
@@ -38,10 +44,15 @@ namespace backend.Controllers
         }
 
         [HttpDelete("DeleteProductToCart")]
-        public async Task<ActionResult> DeleteProductToCart(ChiTietHoaDon item)
+        public async Task<ActionResult> DeleteProductToCart(int idUser,int idProduct)
         {
-            var res = await _cartService.DeleteProductToCart(item);
-            return StatusCode(200, res);
+            var res = await _cartService.DeleteProductToCart(idUser,idProduct);
+            if (res > 0)
+            {
+                return StatusCode(200, res);
+            }
+            return StatusCode(500,res);
+            
         }
     }
 }
