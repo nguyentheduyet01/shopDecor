@@ -51,8 +51,7 @@ $(document).ready(function () {
                                         <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                     </div>
-                                    <button name="addtocart" value="5" class="btn alazea-btn ml-15">Thêm vào giỏ hàng</button>
-                                    <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Mua ngay</button>
+                                    <a onclick="addtocart(${reponse.maSp})" name="addtocart" value="5" class="btn alazea-btn ml-15">Thêm vào giỏ hàng</a>
                                 </form>
                                
                             </div>
@@ -259,8 +258,7 @@ function SanPhamTuongTu(maloai){
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
-                                <a href="cart.html" class="add-to-cart-btn ">Mua ngay</a>
+                                <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ </a>
                             </div>
                         </div>
                         <div class="product-info mt-15 text-center">

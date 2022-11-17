@@ -92,6 +92,27 @@ function closePopUp(){
 }
 function checkOut(){
     document.getElementById("checkout-button").onclick = function(){
+        listProducts = JSON.parse(localStorage.getItem('cartProducts'))
+    if (listProducts) {
         document.getElementById("pop-up-container").style.visibility = 'visible';
+        callapiThanhtoan()
+    } else {
+
     }
+       
+    }
+}
+function callapiThanhtoan(){
+    const user = JSON.parse(localStorage.getItem('user'))
+    $.ajax({
+        url: 'https://localhost:7132/api/Cart/CheckoutCart?userId=' + user.idUser,
+        method: 'GET',
+        contentType: 'application\json',
+        dataType: 'json',
+        error: function (response) { },
+        success: function (reponse) {
+            localStorage.setItem("cartProducts", JSON.stringify(reponse))
+        },
+        fail: function (response) { }
+    });
 }
