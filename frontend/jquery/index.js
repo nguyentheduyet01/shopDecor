@@ -124,7 +124,8 @@ function addtocart(spId) {
             fail: function (response) { }
         });
     } else {
-       alert("Bạn cần đăng nhập để thêm vào giỏ hàng")
+    //    alert("Bạn cần đăng nhập để thêm vào giỏ hàng")
+    $("#exampleModal").modal();
     }
 }
 function getcart(iduser) {

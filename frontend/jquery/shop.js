@@ -27,7 +27,7 @@ function getList(pageNumber){
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
+                        <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ</a>
                             </div>
                         </div>
                         <div class="product-info mt-15 text-center">
@@ -64,7 +64,7 @@ function getListSearch(textSearch){
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
+                        <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ</a>
                             </div>
                         </div>
                         <div class="product-info mt-15 text-center">
@@ -104,7 +104,7 @@ function fillter(maxvalue){
                         <div class="product-img">
                         <a href="shop-details.html??idProduct=${reponse.data[i].maSp}"><img src="assets/img/${reponse.data[i].anhDaiDien}.jpg" style="object-fit: cover;height: 255px;"></a>
                         <div class=" product-meta d-flex justify-content-center">
-                                <a href="cart.html" class="add-to-cart-btn ">Thêm vào giỏ </a>
+                        <a onclick="addtocart(${reponse.data[i].maSp})" class="add-to-cart-btn ">Thêm vào giỏ</a>
                             </div>
                         </div>
                         <div class="product-info mt-15 text-center">
