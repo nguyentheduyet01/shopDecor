@@ -66,7 +66,16 @@ namespace backend.Repositories
                 MaHd = cartMaster.MaHd,
                 MaSp = idProduct
             };
-            _context.ChiTietHoaDon.Add(productDetail);
+            var productDetailExists = _context.ChiTietHoaDon.Where(n => n.MaHd == cartMaster.MaHd && n.MaSp == idProduct).FirstOrDefault();
+            // Nếu sản phẩm đã có r thì chỉ tăng số lượng 
+            if (productDetailExists != null)
+            {
+                productDetailExists.SoLuong += count;
+            }
+            else
+            {
+                _context.ChiTietHoaDon.Add(productDetail);
+            }    
             _context.SaveChanges();
             return count;
         }
