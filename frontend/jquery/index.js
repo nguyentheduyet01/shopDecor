@@ -1,6 +1,7 @@
 $(document).ready(function () {
     GetNews();
     GetHots();
+    LogOut();
     document.getElementById("getsearch").addEventListener('submit', (e) => {
         e.preventDefault()
         let textsearch = document.getElementById("search").value;
@@ -103,6 +104,7 @@ function login() {
             localStorage.setItem("user", JSON.stringify(reponse))
             localStorage.setItem("cartProducts", JSON.stringify(reponse.cartProducts))
             location.reload();
+            LogOut();
         },
         fail: function (response) {
         }
@@ -141,3 +143,29 @@ function getcart(iduser) {
         fail: function (response) { }
     });
 }
+
+function LogOut(){
+    const login = JSON.parse(localStorage.getItem('user'))
+    if (login){
+        var obj = document.getElementById("uname");
+        var obj2 = document.getElementById("logout-bar");
+        obj.onmouseover = function(){
+            obj2.style.display = 'block';
+        }
+        // obj.onmouseleave = function(){
+        //     document.getElementById("logout-bar").style.display = 'none';
+        // }
+        obj2.onmouseover = function(){
+            obj2.style.display = 'block';
+        }
+        obj2.onmouseleave = function(){
+            obj2.style.display = 'none';
+        }
+        document.getElementById("btn-logout").onclick = function(){
+            localStorage.clear();
+            location.reload();
+        }
+    }
+
+}
+

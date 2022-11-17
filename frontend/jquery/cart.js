@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    closePopUp();
+    checkOut();
     listProducts = JSON.parse(localStorage.getItem('cartProducts'))
     if (listProducts) {
         getProductToCart();
@@ -82,4 +84,14 @@ function sumThanhToan(){
 
     }
     document.getElementById("totalPrice").innerHTML = sum.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,") + " ₫";
+}
+function closePopUp(){
+    document.getElementById("btn-close").onclick = function(){
+        document.getElementById("pop-up-container").style.visibility = 'hidden';
+    }
+}
+function checkOut(){
+    document.getElementById("checkout-button").onclick = function(){
+        document.getElementById("pop-up-container").style.visibility = 'visible';
+    }
 }
